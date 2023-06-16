@@ -43,6 +43,7 @@
                                             <span class="description">{{ $s->alamat }}</span>
                                         </div>
                                     </div>
+                                    <span class="badge badge-pill badge-primary heading">{{ __('Score : ') }}{{ $s->score }}</span>
                                 </div>
                             </div>
                         </div>

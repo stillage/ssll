@@ -14,12 +14,7 @@ use App\Models\{
     User,
     Departement,
     kategori,
-    Overtime,
-    PaidLeave,
     pertanyaan,
-    Task,
-    Salary,
-    Presence,
     sekolah,
     survei
 };
@@ -58,14 +53,24 @@ class HomeController extends Controller
         $kategori = kategori::count();
         $pertanyaan = pertanyaan::count();
         $sekolah = sekolah::count();
+        $sekolahs = 
+        $namasekolah = DB::table('sekolahs')->select('nama')->get();
+        $score = sekolah::select('sekolahs.*','surveis.score')
+                        ->join('surveis','surveis.sekolah','=','sekolahs.id')
+                        ->get();
         $bobot = bobot::count();
         $users = User::count();
         $auth = auth()->user();
+        $s = sekolah::where('hasil','=','Sekolah Sadar Lalu Lintas')->count();
+        $c = sekolah::where('hasil','=','Sekolah Cukup Sadar Lalu Lintas')->count();
+        $k = sekolah::where('hasil','=','Sekolah Kurang Sadar Lalu Lintas')->count();
+        $t = sekolah::where('hasil','=','Sekolah Tidak Sadar Lalu Lintas')->count();
+        $ko = sekolah::where('hasil','=','')->count();
         $checkProfil = $auth->date_of_birth == null || $auth->place_of_birth == null || $auth->gender == null || $auth->address == null || $auth->last_education == null || $auth->phone == null;
 
         if ($auth->hasRole('admin')) {
             return view('home', compact(
-            'response','kategori','users','pertanyaan','sekolah','checkProfil'
+            'response','kategori','users','pertanyaan','sekolah','checkProfil','namasekolah','score','s','c','k','t','ko'
             ));
 
         } else if ($auth->hasRole('supervisor')){
@@ -75,7 +80,6 @@ class HomeController extends Controller
 
         } else if ($auth->hasRole('user')) {
             $survey = survei::where('by', $auth->id)->count();
-            // $unacceptedTasks = Task::whereRaw('(task_status_id = "1" OR task_status_id = "2") AND user_id = "'.$auth->id.'"')->limit(3)->orderBy('deadline','DESC')->get();
             return view('home', compact(
             'response','survey','checkProfil'
             ));

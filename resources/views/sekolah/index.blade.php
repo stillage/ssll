@@ -54,10 +54,11 @@
                                 <tr>
                                     <th>{{ __('#') }}</th>
                                     <th>School Name</th>
+                                    <th>Score</th>
                                     <th>Address</th>
                                     <th>Photo</th>
                                     <th>Result</th>
-                                    <th style="text-align: center; width: 150px">{{ __('Action') }}</th>
+                                    <th style="text-align: center; width: 500px">{{ __('Action') }}</th>
                                     <th style="text-align: center">{{ __('Survey') }}</th>
                                 </tr>
                             </thead>
@@ -65,10 +66,11 @@
                                 <tr>
                                     <th>{{ __('#') }}</th>
                                     <th>School Name</th>
+                                    <th>Score</th>
                                     <th>Address</th>
                                     <th>Photo</th>
                                     <th>Result</th>
-                                    <th style="text-align: center; width: 150px">{{ __('Action') }}</th>
+                                    <th style="text-align: center; width: 500px">{{ __('Action') }}</th>
                                     <th style="text-align: center">{{ __('Survey') }}</th>
                                 </tr>
                             </tfoot>
@@ -77,6 +79,7 @@
                                     <tr>
                                         <td style="vertical-align: middle">{{ $loop->iteration }}</td>
                                         <td style="vertical-align: middle">{{ $s->nama }}</td>
+                                        <td style="vertical-align: middle">{{ $s->survei->score ?? ''}}</td>
                                         <td style="vertical-align: middle">{{ $s->alamat }}</td>
                                         <td style="vertical-align: middle">
                                             @if (strlen($s->photo) > 0)
@@ -94,14 +97,14 @@
                                                 <span class="badge badge-pill badge-primary">{{ $s->hasil }}</span>
                                             @elseif($s->hasil == $bobot3->hasil)
                                                 <span class="badge badge-pill badge-warning">{{ $s->hasil }}</span>
-                                            @elseif($s->hasil == $bobot1->hasil)
+                                            @elseif($s->hasil == $bobot4->hasil)
                                                 <span class="badge badge-pill badge-danger">{{ $s->hasil }}</span>
                                             @elseif($s->hasil == '')
                                                 <span
                                                     class="badge badge-pill badge-light">{{ __('Belum Melakukan Survei') }}</span>
                                             @endif
                                         </td>
-                                        <td style="vertical-align: middle" align="center">
+                                        <td style="vertical-align: middle; width: 500px" align="center">
                                             <a href="#"
                                                 class="btn btn-sm btn-icon btn-default btn-icon-only rounded-circle"
                                                 data-toggle="modal" data-target="#sekolah-show-{{ $s->id }}">

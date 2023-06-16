@@ -227,6 +227,35 @@
             return i;
         }
     </script>
+    <script>
+        var PurchasesChart = (function() {
+            var $chart = $('#chart-purchases');
+
+            function initChart($chart) {
+
+                // Create chart
+                var purchasesChart = new Chart($chart, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Sekolah Sadar Lalu Lintas', 'Sekolah Cukup Lalu Lintas', 'Sekolah Kurang Sadar Lalu Lintas', 'Sekolah Tidak Lalu Lintas', 'Belum Melakukan Survei'],
+                        datasets: [{
+                            label: 'Chart Tingkat Kesadaran Sekolah',
+                            data: [{!! json_encode($s) !!}, {!! json_encode($c) !!}, {!! json_encode($k) !!}, {!! json_encode($t) !!}, {!! json_encode($ko) !!}]
+                        }]
+                    }
+                });
+
+                // Save to jQuery object
+                $chart.data('chart', purchasesChart);
+            }
+
+
+            // Init chart
+            if ($chart.length) {
+                initChart($chart);
+            }
+        })();
+    </script>
 </body>
 
 </html>

@@ -5,8 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\bobot;
 use Image;
 use App\Models\sekolah;
+use App\Models\survei;
 use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class SekolahController extends Controller
 {
@@ -26,7 +29,9 @@ class SekolahController extends Controller
     public function index()
     {
         if (auth()->user()->hasAnyRole('admin|supervisor')) {
-            $sekolahs = sekolah::all();
+            $sekolahs = sekolah::with('survei')->get();
+            // dd($sekolahs);
+            // $sekolahs = sekolah::all();
             $bobot1 = bobot::where('id', 1)->first();
             $bobot2 = bobot::where('id', 2)->first();
             $bobot3 = bobot::where('id', 3)->first();
@@ -35,7 +40,7 @@ class SekolahController extends Controller
                 'sekolahs','bobot1','bobot2','bobot3','bobot4'
             ));
         } else if (auth()->user()->hasRole('user')) {
-            $sekolahs = sekolah::all();
+            $sekolahs = sekolah::with('survei')->get();
             $bobot1 = bobot::where('id', 1)->first();
             $bobot2 = bobot::where('id', 2)->first();
             $bobot3 = bobot::where('id', 3)->first();
@@ -70,6 +75,7 @@ class SekolahController extends Controller
         ]);
 
         $input = $request->all();
+        // dd($input);
         if ($request->file('photo')) {
             File::delete('img/profile/' . $sekolah->photo);
             $file = $request->file('photo');

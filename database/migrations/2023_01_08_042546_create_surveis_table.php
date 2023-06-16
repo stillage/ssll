@@ -18,7 +18,7 @@ class CreateSurveisTable extends Migration
             $table->string('sekolah');
             $table->string('hasil');
             $table->string('by');
-            $table->integer('score');
+            $table->decimal('score', 16, 8, true);
             $table->timestamps();
             $table->softDeletes();
         });

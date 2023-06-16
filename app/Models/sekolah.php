@@ -17,4 +17,9 @@ class sekolah extends Model
         'hasil'
     ];
 
+    public function survei()
+    {
+        return $this->belongsTo(survei::class, 'id','sekolah');
+    }
+
 }

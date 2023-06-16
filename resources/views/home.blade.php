@@ -1,28 +1,5 @@
-{{-- @extends('layouts.app')
-
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-
-<div class="card-body">
-    @if (session('status'))
-        <div class="alert alert-success" role="alert">
-            {{ session('status') }}
-        </div>
-    @endif
-
-    {{ __('You are logged in!') }}
-</div>
-</div>
-</div>
-</div>
-</div>
-@endsection --}}
 @section('title', '| Dashboard')
-@extends('layouts.main')
+@extends('layouts.main1')
 @section('content')
     <!-- Header -->
     <div class="header bg-primary pb-6">
@@ -49,8 +26,7 @@
                                 <span class="alert-text">
                                     <strong>Your profile is not complete!</strong>
                                     Complete your profile so you can use the features to the fullest!
-                                    <a href="{{ route('profile') }}"
-                                        class="text-nowrap text-white text-underline">Complete
+                                    <a href="{{ route('profile') }}" class="text-nowrap text-white text-underline">Complete
                                         profile now</a>
                                 </span>
                             </div>
@@ -58,192 +34,210 @@
                     </div>
                 @endif
                 @role('admin')
-                <div class="row">
-                    <div class="col-xl-3 col-md-6">
-                        <div class="card card-stats">
-                            <!-- Card body -->
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col">
-                                        <h5 class="card-title text-uppercase text-muted mb-0">Pertanyaan</h5>
-                                        <span class="h2 font-weight-bold mb-0">{{ $pertanyaan }}</span>
-                                    </div>
-                                    <div class="col-auto">
-                                        <div class="icon icon-shape bg-gradient-blue text-white rounded-circle shadow">
-                                            <i class="fa fa-question-circle"></i>
+                    <div class="row">
+                        <div class="col-xl-3 col-md-6">
+                            <div class="card card-stats">
+                                <!-- Card body -->
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col">
+                                            <h5 class="card-title text-uppercase text-muted mb-0">Pertanyaan</h5>
+                                            <span class="h2 font-weight-bold mb-0">{{ $pertanyaan }}</span>
+                                        </div>
+                                        <div class="col-auto">
+                                            <div class="icon icon-shape bg-gradient-blue text-white rounded-circle shadow">
+                                                <i class="fa fa-question-circle"></i>
+                                            </div>
                                         </div>
                                     </div>
+                                    <p class="mt-3 mb-0 text-sm">
+                                        <a href="{{ route('pertanyaans.index') }}" class="text-nowrap">
+                                            Go to pertanyaan index
+                                            <i class="fa fa-arrow-right"></i>
+                                        </a>
+                                    </p>
                                 </div>
-                                <p class="mt-3 mb-0 text-sm">
-                                    <a href="{{ route('pertanyaans.index') }}" class="text-nowrap">
-                                        Go to pertanyaan index
-                                        <i class="fa fa-arrow-right"></i>
-                                    </a>
-                                </p>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-md-6">
+                            <div class="card card-stats">
+                                <!-- Card body -->
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col">
+                                            <h5 class="card-title text-uppercase text-muted mb-0">User</h5>
+                                            <span class="h2 font-weight-bold mb-0">{{ $users }}</span>
+                                        </div>
+                                        <div class="col-auto">
+                                            <div class="icon icon-shape bg-gradient-warning text-white rounded-circle shadow">
+                                                <i class="fa fa-users"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p class="mt-3 mb-0 text-sm">
+                                        <a href="{{ route('users.index') }}" class="text-nowrap">
+                                            Go to users index
+                                            <i class="fa fa-arrow-right"></i>
+                                        </a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-md-6">
+                            <div class="card card-stats">
+                                <!-- Card body -->
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col">
+                                            <h5 class="card-title text-uppercase text-muted mb-0">Sekolah</h5>
+                                            <span class="h2 font-weight-bold mb-0">{{ $sekolah }}</span>
+                                        </div>
+                                        <div class="col-auto">
+                                            <div class="icon icon-shape bg-gradient-success text-white rounded-circle shadow">
+                                                <i class="fa fa-graduation-cap"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p class="mt-3 mb-0 text-sm">
+                                        <a href="{{ route('sekolahs.index') }}" class="text-nowrap">
+                                            Go to Sekolah index
+                                            <i class="fa fa-arrow-right"></i>
+                                        </a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-md-6">
+                            <div class="card card-stats">
+                                <!-- Card body -->
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col">
+                                            <h5 class="card-title text-uppercase text-muted mb-0">Kategori</h5>
+                                            <span class="h2 font-weight-bold mb-0">{{ $kategori }}</span>
+                                        </div>
+                                        <div class="col-auto">
+                                            <div class="icon icon-shape bg-gradient-info text-white rounded-circle shadow">
+                                                <i class="fa fa-list"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p class="mt-3 mb-0 text-sm">
+                                        <a href="{{ route('kategoris.index') }}" class="text-nowrap">
+                                            Go to kategori index
+                                            <i class="fa fa-arrow-right"></i>
+                                        </a>
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-3 col-md-6">
-                        <div class="card card-stats">
-                            <!-- Card body -->
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col">
-                                        <h5 class="card-title text-uppercase text-muted mb-0">User</h5>
-                                        <span class="h2 font-weight-bold mb-0">{{ $users }}</span>
-                                    </div>
-                                    <div class="col-auto">
-                                        <div class="icon icon-shape bg-gradient-warning text-white rounded-circle shadow">
-                                            <i class="fa fa-users"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                                <p class="mt-3 mb-0 text-sm">
-                                    <a href="{{ route('users.index') }}" class="text-nowrap">
-                                        Go to users index
-                                        <i class="fa fa-arrow-right"></i>
-                                    </a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-md-6">
-                        <div class="card card-stats">
-                            <!-- Card body -->
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col">
-                                        <h5 class="card-title text-uppercase text-muted mb-0">Sekolah</h5>
-                                        <span class="h2 font-weight-bold mb-0">{{ $sekolah }}</span>
-                                    </div>
-                                    <div class="col-auto">
-                                        <div class="icon icon-shape bg-gradient-success text-white rounded-circle shadow">
-                                            <i class="fa fa-graduation-cap"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                                <p class="mt-3 mb-0 text-sm">
-                                    <a href="{{ route('sekolahs.index') }}" class="text-nowrap">
-                                        Go to Sekolah index
-                                        <i class="fa fa-arrow-right"></i>
-                                    </a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-md-6">
-                        <div class="card card-stats">
-                            <!-- Card body -->
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col">
-                                        <h5 class="card-title text-uppercase text-muted mb-0">Kategori</h5>
-                                        <span class="h2 font-weight-bold mb-0">{{ $kategori }}</span>
-                                    </div>
-                                    <div class="col-auto">
-                                        <div class="icon icon-shape bg-gradient-info text-white rounded-circle shadow">
-                                            <i class="fa fa-list"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                                <p class="mt-3 mb-0 text-sm">
-                                    <a href="{{ route('kategoris.index') }}" class="text-nowrap">
-                                        Go to kategori index
-                                        <i class="fa fa-arrow-right"></i>
-                                    </a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 @endrole
 
                 @role('supervisor')
-                <div class="row">
-                    <div class="col-xl-3 col-md-6">
-                        <div class="card card-stats">
-                            <!-- Card body -->
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col">
-                                        <h5 class="card-title text-uppercase text-muted mb-0">Your Team</h5>
-                                        <span class="h2 font-weight-bold mb-0">{{ $users }}</span>
-                                    </div>
-                                    <div class="col-auto">
-                                        <div class="icon icon-shape bg-gradient-warning text-white rounded-circle shadow">
-                                            <i class="fa fa-users"></i>
+                    <div class="row">
+                        <div class="col-xl-3 col-md-6">
+                            <div class="card card-stats">
+                                <!-- Card body -->
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col">
+                                            <h5 class="card-title text-uppercase text-muted mb-0">Your Team</h5>
+                                            <span class="h2 font-weight-bold mb-0">{{ $users }}</span>
+                                        </div>
+                                        <div class="col-auto">
+                                            <div class="icon icon-shape bg-gradient-warning text-white rounded-circle shadow">
+                                                <i class="fa fa-users"></i>
+                                            </div>
                                         </div>
                                     </div>
+                                    <p class="mt-3 mb-0 text-sm">
+                                        <a href="{{ route('users.index') }}" class="text-nowrap">
+                                            Go to users index
+                                            <i class="fa fa-arrow-right"></i>
+                                        </a>
+                                    </p>
                                 </div>
-                                <p class="mt-3 mb-0 text-sm">
-                                    <a href="{{ route('users.index') }}" class="text-nowrap">
-                                        Go to users index
-                                        <i class="fa fa-arrow-right"></i>
-                                    </a>
-                                </p>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-md-6">
+                            <div class="card card-stats">
+                                <!-- Card body -->
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col">
+                                            <h5 class="card-title text-uppercase text-muted mb-0">Bobot</h5>
+                                            <span class="h2 font-weight-bold mb-0">{{ $bobot }}</span>
+                                        </div>
+                                        <div class="col-auto">
+                                            <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
+                                                <i class="fa fa-filter"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p class="mt-3 mb-0 text-sm">
+                                        <a href="{{ route('bobots.index') }}" class="text-nowrap">
+                                            Go to bobot index
+                                            <i class="fa fa-arrow-right"></i>
+                                        </a>
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-3 col-md-6">
-                        <div class="card card-stats">
-                            <!-- Card body -->
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col">
-                                        <h5 class="card-title text-uppercase text-muted mb-0">Bobot</h5>
-                                        <span class="h2 font-weight-bold mb-0">{{ $bobot }}</span>
-                                    </div>
-                                    <div class="col-auto">
-                                        <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
-                                            <i class="fa fa-filter"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                                <p class="mt-3 mb-0 text-sm">
-                                    <a href="{{ route('bobots.index') }}" class="text-nowrap">
-                                        Go to bobot index
-                                        <i class="fa fa-arrow-right"></i>
-                                    </a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 @endrole
 
                 @role('user')
-                <div class="row">
-                    <div class="col-xl-3 col-md-6">
-                        <div class="card card-stats">
-                            <!-- Card body -->
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col">
-                                        <h5 class="card-title text-uppercase text-muted mb-0">Survei</h5>
-                                        <span class="h2 font-weight-bold mb-0">{{ $survey }}</span>
-                                    </div>
-                                    <div class="col-auto">
-                                        <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
-                                            <i class="fa fa-filter"></i>
+                    <div class="row">
+                        <div class="col-xl-3 col-md-6">
+                            <div class="card card-stats">
+                                <!-- Card body -->
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col">
+                                            <h5 class="card-title text-uppercase text-muted mb-0">Survei</h5>
+                                            <span class="h2 font-weight-bold mb-0">{{ $survey }}</span>
+                                        </div>
+                                        <div class="col-auto">
+                                            <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
+                                                <i class="fa fa-filter"></i>
+                                            </div>
                                         </div>
                                     </div>
+                                    <p class="mt-3 mb-0 text-sm">
+                                        <a href="{{ route('sekolahs.index') }}" class="text-nowrap">
+                                            Go to sekolah index
+                                            <i class="fa fa-arrow-right"></i>
+                                        </a>
+                                    </p>
                                 </div>
-                                <p class="mt-3 mb-0 text-sm">
-                                    <a href="{{ route('sekolahs.index') }}" class="text-nowrap">
-                                        Go to sekolah index
-                                        <i class="fa fa-arrow-right"></i>
-                                    </a>
-                                </p>
                             </div>
                         </div>
                     </div>
-                </div>
                 @endrole
             </div>
         </div>
     </div>
     <div class="container-fluid mt--6">
         <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header bg-transparent">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <h6 class="text-uppercase text-muted ls-1 mb-1">Chart Survey</h6>
+                                <h5 class="h3 mb-0">Scholl</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <!-- Chart -->
+                        <div class="chart">
+                            <canvas id="chart-purchases" class="chart-canvas"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="col-lg-12">
                 <div class="card">
                     <!-- Card header -->
@@ -299,4 +293,10 @@
             @include('nav.footer')
         </div>
     </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+@section('script')
+    <script type="text/javascript">
+        
+    </script>
+@endsection
 @endsection

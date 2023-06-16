@@ -17,9 +17,9 @@
     <div class="col-xl-6">
         <div class="form-group">
             <label class="form-control-label">{{ __('Nilai Jawaban') }}</label>
-            <h6 class="text-primary">{{ __('max value 10') }}</h6>
+            <h6 class="text-primary">{{ __('Nilai Jawaban Per Pertanyaan') }}</h6>
             <div class="input-group input-group-merge">
-                <input type="number" value="{{ $bobots->nilai }}" max="10" class="form-control"
+                <input type="number" value="{{ $bobots->nilai }}" class="form-control"
                     name="nilai" required>
                 @error('nilai')
                     <small class="text-danger" role="alert">
@@ -37,7 +37,7 @@
             <label class="form-control-label">{{ __('Batasan') }}</label>
             <h6 class="text-primary">{{ __('Kurang dari sama dengan nilai yang di inputkan dan max valuenya sekarang '.$max) }}</h6>
             <div class="input-group input-group-merge">
-                <input type="number" value="{{ $bobots->batasan }}" max={{ $max }} class="form-control"
+                <input type="number" value="{{ $bobots->batasan }}" step="0.00001" class="form-control"
                     name="batasan" required>
                 @error('batasan')
                     <small class="text-danger" role="alert">

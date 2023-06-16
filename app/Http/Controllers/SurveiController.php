@@ -81,9 +81,9 @@ class SurveiController extends Controller
         $bobot1 = bobot::where('id', 1)->first()->batasan;
         $bobot2 = bobot::where('id', 2)->first()->batasan;
         $bobot3 = bobot::where('id', 3)->first()->batasan;
-        $bobot4 = bobot::where('id', 4)->first()->batasan;
+        $bobot4 = bobot::where('id', 4)->first()->batasan + 0.00001;
 
-        if ($sum <= $bobot4) {
+        if ($sum == $bobot4 || $sum < $bobot4) {
             survei::create([
                 'sekolah' => $request->sekolah,
                 'by' => $request->by,
@@ -201,9 +201,9 @@ class SurveiController extends Controller
         $bobot1 = bobot::where('id', 1)->first()->batasan;
         $bobot2 = bobot::where('id', 2)->first()->batasan;
         $bobot3 = bobot::where('id', 3)->first()->batasan;
-        $bobot4 = bobot::where('id', 4)->first()->batasan;
+        $bobot4 = bobot::where('id', 4)->first()->batasan + 0.00001;
 
-        if ($sum <= $bobot4) {
+        if ($sum == $bobot4 || $sum < $bobot4) {
             $survey = survei::find($id);
             $sekolah = sekolah::where('id', $survey->sekolah)->first();
             $survey->update([

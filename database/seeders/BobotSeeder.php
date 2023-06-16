@@ -17,26 +17,26 @@ class BobotSeeder extends Seeder
         $bobots = [
             [
                 'jawaban' => 'Sering',
-                'nilai' => 4,
-                'batasan' => 40,
+                'nilai' => 0.466,
+                'batasan' => 18.64,
                 'hasil' => 'Sekolah Sadar Lalu Lintas'
             ],
             [
                 'jawaban' => 'Pernah',
-                'nilai' => 3,
-                'batasan' => 30,
+                'nilai' => 0.277,
+                'batasan' => 11.08,
                 'hasil' => 'Sekolah Cukup Sadar Lalu Lintas'
             ],
             [
                 'jawaban' => 'Jarang',
-                'nilai' => 2,
-                'batasan' => 20,
+                'nilai' => 0.161,
+                'batasan' => 6.44,
                 'hasil' => 'Sekolah Kurang Sadar Lalu Lintas'
             ],
             [
                 'jawaban' => 'Tidak Pernah',
-                'nilai' => 1,
-                'batasan' => 10,
+                'nilai' => 0.096,
+                'batasan' => 3.84,
                 'hasil' => 'Sekolah Tidak Sadar Lalu Lintas'
             ],
 
